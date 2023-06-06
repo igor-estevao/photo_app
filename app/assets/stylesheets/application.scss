@@ -1,0 +1,120 @@
+/*
+ *= require_tree .
+ *= require_self
+ *= require material_icons
+ */
+ @import "./custom_material.scss";
+ @import "materialize";
+ @import url("https://fonts.googleapis.com/icon?family=Material+Icons");
+ 
+
+body {
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
+}
+main {
+  flex: 1 0 auto;
+}
+
+
+#chat-main {
+padding: auto !important;
+height: 450px;
+}
+
+.chat-box {
+  height: 100%;
+  background-color: white;
+  .chat-list {
+    height: 97% !important; 
+    overflow-y: auto !important;
+  }
+  .chat-container {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    position: relative;
+    .row {
+      margin-top: 0;
+      margin-bottom: 0;
+    }
+    .chat-header {
+      height: 50px;
+    }
+    .chat-footer { 
+      height: 50px;
+    }
+    .chat-content {
+      overflow-y: auto;
+      padding: 10px;
+      background-color: antiquewhite;
+    }
+    .scroll-bottom {
+      position: absolute; /* Set position: fixed on the scroll button */
+      bottom: 60px; /* Position the button 20px from the bottom */
+      right: 20px; /* Position the button 20px from the right */
+    }
+  }
+  .chat-messages {
+    padding: 10px;
+  }
+  .chat-message {
+    background-color: aqua;
+    border-radius: 5px;
+    padding: 10px;
+    margin-bottom: 10px;
+    max-width: 60%;
+    word-wrap: break-word;
+    &.right {
+      background-color: beige;
+    }
+  }
+  .chat-send {
+    &.btn{
+      bottom: 0;
+    }
+  }
+}
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+  z-index: 998;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #555;
+  z-index: 999;
+}
+
+// .features {
+//   ul {
+//     margin-left: 0;
+//     padding-left: 15px;
+//   }
+// }
+
+// .jumbotron {
+//   text-align: center;
+//   background-image: asset-url('meeting.png');
+//   background-size: cover;
+//   color: #fff;
+//   font-family: 'Helvetica Neue' !important;
+//   font-stretch: expanded;
+//   padding-top: 25px;
+//   padding-bottom: 25px;
+//   margin-left: 15px;
+//   margin-right: 15px;
+//   text-shadow: -1px 0 #555, 0 1px #555, 1px 0 #555, 0 -1px #555;
+
+// }
+
+.no-left-padding {
+  padding-left: 0 !important;
+}
+
+.listing {
+  list-style: none;
+  padding-left: 0;
+}
+

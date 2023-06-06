@@ -1,0 +1,10 @@
+<turbo-frame id="flashes">
+  <% flash.each do |key, value| %>
+    <div class="alert alert-<%= key %>">
+      <div class="toast-container" data-controller="toast" hidden data-key="<%= key %>">
+        <span class="toast-content" data-toast-target="content"><%= value.html_safe %></span>
+      </div>
+    </div>
+  <% end %>
+  <% flash.clear %>
+</turbo-frame>

@@ -1,0 +1,57 @@
+<%= form_tag charges_path do %>
+    <article>
+      <% if flash[:error].present? %>
+        <div id="error_explanation">
+          <p><%= flash[:error] %></p>
+        </div>
+
+      <label class="amount">
+        <span>Amount: $5.00</span>
+      </label>
+    </article>
+
+    <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+            data-key="<%= Rails.configuration.stripe[:publishable_key] %>"
+            data-description="A month's subscription"
+            data-amount="500"
+            data-locale="auto">
+    </script>
+<% end %>
+<% end %>
+<br>
+
+<%= fields_for( :payment ) do |p| %>
+              <div class="col s12 m10 l8">
+                <div class="col s12 m12 l12">
+                  <%= p.label :card_infos, "Payment Infos", data: { stripe: 'label'} %>
+                </div>
+                <div class="row">
+                  <div class="input-field col s12 m12 l12">
+                    <%= p.label :card_number, "Card Number", data: { stripe: 'label'} %>
+                    <%= p.text_field :card_number, class: "form-control", required: true, data: { stripe: 'number'} %>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col s12">
+                    <%= p.label :card_expires, "Card Expires", data: { stripe: 'label'} %>
+                  </div>
+                  <div class="input-field col s6 m3">
+                    <%= p.select :card_expires_month,
+                    options_for_select(Payment.month_options),
+                    { include_blank: 'Month' },
+                    "data-stripe" => "exp-month",
+                    required: true %>
+                  </div>
+                  <div class="input-field col s6 m3">
+                    <%= p.select :card_expires_year, options_for_select(Payment.year_options.push),
+                    { include_blank: 'Year' },
+                    data: { stripe: "exp-year" },
+                    required: true %>
+                  </div>
+                  <div class="input-field col s12 m6">
+                    <%= p.label :card_cvv, "Card CVV", data: { stripe: 'label'} %>
+                    <%= p.text_field :card_cvv, class: "form-control", required: true, data: { stripe: 'cvc'} %>
+                  </div>
+                </div>
+              </div>
+            <% end %>

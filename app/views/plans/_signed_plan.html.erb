@@ -1,0 +1,7 @@
+<div id="<%= dom_id plan %>" class="card col s12 m6 l6 center plan">
+  <h2><%= plan.name %></h2>
+  <p>
+    <%= link_to 'Keep an Eye for this Plan', plan_path(plan), class: 'btn' %>
+    <%= link_to  "Cancel", plan_cancel_path(plan), data: {turbo_method: :post}, class: 'btn' %>
+  </p>
+</div>

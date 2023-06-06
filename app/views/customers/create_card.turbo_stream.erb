@@ -1,0 +1,9 @@
+<%= turbo_stream.update "flashes" do %>
+  <%= render "shared/flashes" %>
+<% end %>
+
+<%= turbo_stream.update "cards" do %>
+  <% @cards.each do |card| %>
+    <%= render "charges/card", card: card, default: (card.id == @stripe_customer.default_source) %>
+  <% end %>
+<% end %>

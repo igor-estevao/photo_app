@@ -1,0 +1,33 @@
+<% if current_user %>
+  <%= tag.li do %>
+    <%= link_to images_path do %>
+      <%= tag.i("image", class: "material-icons") %>
+      <%= tag.span("Images") %>
+    <% end %>
+  <% end %>
+  <%= tag.li do %>
+    <%= link_to my_page_path do %>
+      <%= tag.i("person", class: "material-icons") %>
+      <%= tag.span("My Account") %>
+    <% end %>
+  <% end %>
+  <%= tag.li do %>
+    <%= link_to(destroy_user_session_path, data: { turbo_method: :delete } ) do %>
+      <%= tag.i("logout", class: "material-icons") %>
+      <%= tag.span("logout") %>
+    <% end %>
+  <% end %>
+<% else %>
+  <%= tag.li do %>
+    <%= link_to new_user_session_path do %>
+      <%= tag.i("login", class: "material-icons") %>
+      <%= tag.span "Login" %>
+    <% end %>
+  <% end %>
+  <%= tag.li do %>
+    <%= link_to new_user_registration_path do %>
+      <%= tag.i("person_add", class: "material-icons") %>
+      <%= tag.span "Sign Up" %>
+    <% end %>
+  <% end %>  
+<% end %>

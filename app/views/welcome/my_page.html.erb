@@ -1,0 +1,12 @@
+<div class="container">
+  <h2>This is Your Page!</h2>
+  <%= turbo_stream_from @id_for_plans_stream_and_list %>
+  <div class="row">
+    <%= link_to "Payments", customer_cards_path(current_user.customer) %>
+    <div id=<%= "#{@id_for_plans_stream_and_list}" %> class="plans clearfix">
+      <% @plans.each do |plan| %>
+        <%= render "plans/signed_plan", plan: plan %>
+      <% end %>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,18 @@
+<header>
+  <nav class="green lighten-1">
+    <div class="nav-wrapper container">
+      <%= link_to root_path, class: "brand-logo" do %>
+        LOGO
+      <% end %>
+      <a href="#!" data-target="mobile-sidenav" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+      <%= render "shared/navbar" %>
+    </div>
+  </nav>
+</header>
+
+<%= render "shared/sidenav" %>
+
+<!-- Dropdown Structure -->
+<ul id='account_head_drop' class='dropdown-content below-origin'>
+  <%= render "shared/account_links" %>
+</ul>

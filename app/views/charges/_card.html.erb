@@ -1,0 +1,27 @@
+<div class="row card">
+  <div class="col s12">
+    <div class="col s3 green circle center" style="height: 100%;"><%= card.brand %></div>
+    <div class="col s8">
+      <div class="row">
+        <div class="col s12 left"><%= card.name %></div>
+      </div>
+      <div class="row">
+        <div class="col s8 left"><%= card.last4 %></div>
+        <div class="s4 left"><%= "#{card.exp_month}/#{card.exp_year}" %></div>
+      </div>
+    </div>
+    <div class="col s1 center">
+      <%= link_to "path" do %>
+        <%= link_to customer_delete_card_path(current_user.customer, card_id: card.id), data: {turbo_method: :delete, turbo_confirm: 'Are you sure?'} do %>
+          <div class="row">Delete</div>
+        <% end %>
+      <% end %>
+
+      <% unless default %>
+        <%= button_to customer_set_default_card_path(current_user.customer, card_id: card.id), data: {turbo_method: true} do %>
+          <div class="row">Set Default</div>
+        <% end %>
+      <% end %>
+    </div>
+  </div>
+</div>

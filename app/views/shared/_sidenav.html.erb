@@ -1,0 +1,20 @@
+<ul class="sidenav" id="mobile-sidenav">
+  <%= render "shared/nav_links" %>
+  <div id="nav-chatrooms"></div>
+  <li>
+    <ul class="collapsible collapsible-accordion">
+      <li class="bold">
+        <a class="collapsible-header waves-effect waves-teal" tabindex="0">
+          <i class="material-icons left">account_circle</i>
+            <%= current_user ? current_user.email : "Account" %>
+          </a>
+        <div class="collapsible-body">
+          <ul>
+            <%= render "shared/account_links" %>
+          </ul>
+        </div>
+      </li>
+    </ul>
+  </li>
+</ul>
+

@@ -1,0 +1,16 @@
+<div id="<%= dom_id plan %>" class="card col s12 m4 l3 center plan">
+  <h2><%= plan.name %></h2>
+  <div class="price">
+    Price: <%= plan.price.amount %>
+  </div>
+  <div class="features">
+    <ul>
+      <li>Unlimited Image Uploads</li>
+      <li>Responsive design</li>
+      <li>Access anywhere</li>
+    </ul>
+  </div>
+  <p>
+    <%= link_to 'Sign this Plan', plan_sign_path(plan), data: {turbo_method: :post}, class: 'btn' %>
+  </p>
+</div>

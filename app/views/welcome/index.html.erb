@@ -1,2 +1,12 @@
-<h1>Welcome#index</h1>
-<p>Find me in app/views/welcome/index.html.erb</p>
+<div class="container">
+  <h2>Welcome to the Photo Management App!</h2>
+  <p class="lead">
+    You'll love managing your Photos with our application. Sign up!
+  </p>
+  <%= turbo_stream_from @avaible_plans_id %>
+  <div class="row">
+    <div id=<%= @avaible_plans_id %> class="plans clearfix">
+      <%= render @plans %>
+    </div>
+  </div>
+</div>

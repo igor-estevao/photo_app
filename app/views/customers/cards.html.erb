@@ -1,0 +1,48 @@
+<div class="container">
+  <div class="row">
+    <div class="card col s12 m10 l8 offset-m1 offset-l2">
+      <div id="cards" class="col s12">
+        <% @cards.each do |card| %>
+          <%= render "charges/card", card: card, default: (card.id == @stripe_customer.default_source) %>
+        <% end %>
+      </div>
+      <%= form_with url: customer_create_card_path(@customer), data: {turbo: :true} do |f| %>
+        <div class="col s12 m10 l8">
+          <div class="col s12">
+            <%= f.label :card_infos, "Payment Infos", data: { stripe: 'label'} %>
+          </div>
+          <div class="row">
+            <div class="input-field col s12">
+              <%= f.label :card_number, "Card Number", data: { stripe: 'label'} %>
+              <%= f.text_field :card_number, value: valid_card_number_mc, class: "form-control", required: true, data: { stripe: 'number'} %>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col s12">
+              <%= f.label :card_expires, "Card Expires", data: { stripe: 'label'} %>
+            </div>
+            <div class="input-field col s6 m3">
+              <%= f.select :card_expires_month,
+              options_for_select(Payment.month_options),
+              { include_blank: 'Month' },
+              "data-stripe" => "exp-month",
+              required: true %>
+            </div>
+            <div class="input-field col s6 m3">
+              <%= f.select :card_expires_year, options_for_select(Payment.year_options.push),
+              { include_blank: 'Year' },
+              data: { stripe: "exp-year" },
+              required: true %>
+            </div>
+            <div class="input-field col s12 m6">
+              <%= f.label :card_cvv, "Card CVV", data: { stripe: 'label'} %>
+              <%= f.text_field :card_cvv, value: valid_card_cvv_mc,class: "form-control", required: true, data: { stripe: 'cvc'} %>
+            </div>
+          </div>
+          <%= f.submit %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>
+  
